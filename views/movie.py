@@ -35,8 +35,8 @@ class MoviesView(Resource):
 
 @movie_ns.route('/<int:movie_id>')
 class MoviesView(Resource):
-    def get(self, movie_id: int):
-        return movie_schema.dump(movie_service.get_movie_by(movie_id)), 200
+    def get(self, movie_id):
+        return movie_schema.dump([movie_service.get_one(movie_id)]), 200
 
     def put(self, movie_id: int):
         movie_service.update_film(request.json)
